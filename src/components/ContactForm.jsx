@@ -9,12 +9,13 @@ const ContactForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const name = e.target.elements.name.value;
+    const phone = e.target.elements.phone.value;
     const foundContant = contacts.find((contact) => contact.name === name);
     const alertMessage = name + "\xa0" + "is already in contacts.";
     if (foundContant) {
       return alert(alertMessage);
     } else {
-      dispatch(addContact(e.target.elements.name.value));
+      dispatch(addContact({ name: name, phone: phone }));
     }
   };
 
